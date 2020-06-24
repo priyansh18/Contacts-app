@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+import { PropTypes } from "prop-types";
 
 class ListContacts extends Component {
   // state = {  }
   render() {
-    const { contacts,onDelete } = this.props;
+    const { contacts, onDelete } = this.props;
     console.log("Contacts", contacts);
     return (
       <ol className="contact-list">
@@ -17,12 +18,22 @@ class ListContacts extends Component {
               <p>{contact.name}</p>
               <p>{contact.handle}</p>
             </div>
-            <button className="contact-remove" onClick={()=>onDelete(contact)}>Remove</button>
+            <button
+              className="contact-remove"
+              onClick={() => onDelete(contact)}
+            >
+              Remove
+            </button>
           </li>
         ))}
       </ol>
     );
   }
 }
+
+ListContacts.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default ListContacts;
