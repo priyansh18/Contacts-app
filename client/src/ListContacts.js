@@ -17,7 +17,7 @@ class ListContacts extends Component {
     this.updateQuery("");
   };
   render() {
-    const { contacts, onDelete} = this.props;
+    const { contacts, onDelete } = this.props;
     const { query } = this.state;
     // console.log("Contacts", contacts);
     const showingContacts =
@@ -44,7 +44,7 @@ class ListContacts extends Component {
         {showingContacts.length !== contacts.length && (
           <div className="showing-contacts">
             <span>
-              Now Showiing {showingContacts.length} of {contacts.length}
+              Now Showing {showingContacts.length} of {contacts.length}
             </span>
             <button onClick={this.clearQuery}>Show All</button>
           </div>
@@ -54,15 +54,17 @@ class ListContacts extends Component {
             <li key={contact.id} className="contact-list-item">
               <div
                 className="contact-avatar"
-                style={{ backgroundImage: `url(${contact.avatarURL})` }}
+                style={{
+                  backgroundImage: `url(${contact.avatarURL})`,
+                }}
               />
               <div className="contact-details">
                 <p>{contact.name}</p>
                 <p>{contact.handle}</p>
               </div>
               <button
-                className="contact-remove"
                 onClick={() => onDelete(contact)}
+                className="contact-remove"
               >
                 Remove
               </button>
